@@ -14,7 +14,7 @@ class Header extends React.Component{
         }
     }
     renderAuthButton = ()=>{
-        if(this.props.login){
+        if(localStorage.login === "true"){
           return <Button className="col-3 col-md-1 log_btn"size="sm"variant="outline-secondary" onClick={this.logout} >Log Out</Button>
         } else{
           return <Button className="col-3 col-md-1 log_btn"size="sm"variant="outline-secondary" onClick={this.toggle} >Log In</Button>
