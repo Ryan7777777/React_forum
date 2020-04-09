@@ -1,9 +1,5 @@
 import $ from 'jquery';
-export const userService = {
-    login,
-    logout 
-};
-function login(email,password) {
+const login = (email,password) => {
         return $.ajax({
         url:'http://127.0.0.1:4255/api/v1/users/login',
         type:'POST',
@@ -17,7 +13,7 @@ function login(email,password) {
         }
     })
 }
-function logout(){
+const logout = () => {
     return $.ajax({
         url:'http://127.0.0.1:4255/api/v1/users/logout',
         type:'POST',
@@ -32,3 +28,7 @@ function logout(){
         }
     })
 }
+export const userService = {
+    login,
+    logout 
+};
