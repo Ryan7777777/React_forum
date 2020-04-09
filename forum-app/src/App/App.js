@@ -6,15 +6,17 @@ import './App.css';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 function App() {
   return (
-    <div className="App">
+    <div className="page-wrapper">
       <Router>
      <Switch>
             <Route path="/signup/">
               <Signup/>
             </Route>
             <Route path="/">
-              <Home/>
-              <Body/>
+              <div className="mainpage">
+                 <Home/>
+                 <Body/>
+              </div>
             </Route>
       </Switch>
       </Router>

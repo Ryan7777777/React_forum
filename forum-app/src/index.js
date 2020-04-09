@@ -8,11 +8,7 @@ import App from './App/App.js';
 ReactDOM.render(
   <CookiesProvider>
   <React.StrictMode>
-  <div id='page-wrapper'>
-    <div id="body">
-         <App/>
-    </div>
-  </div>
+  <App/>
   </React.StrictMode>
   </CookiesProvider>,
   document.getElementById('root')
