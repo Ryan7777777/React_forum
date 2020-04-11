@@ -14,7 +14,6 @@ class Home extends React.Component{
     }
     toggleModal = () => {
         this.setState({show : !this.state.show})
-
     }
     render(){
         return(

@@ -2,7 +2,6 @@ import React from 'react';
 import {Button,Modal,Form, FormControl} from 'react-bootstrap';
 import './Login.css';
 import {userService} from "../../_services/user.service.js";
-import $ from 'jquery';
 class Login extends React.Component{
     constructor(props){
         super(props)
@@ -36,7 +35,7 @@ class Login extends React.Component{
     }
     componentDidUpdate() {
         if(this.props.show_d===true && this.state.show === false){
-            this.state.show = true
+            this.setState({show:true})
             this._input.focus();
         }
       }
