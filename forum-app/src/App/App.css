@@ -38,6 +38,8 @@
 }
 .page-wrapper{
   background: #e5e5e5;
+  height: 100vh;
+  width: 100vw;
 }
 .mainpage{
   background-color: white;

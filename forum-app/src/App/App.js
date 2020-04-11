@@ -1,6 +1,6 @@
 import Home from '../Homepage/Home.js';
 import Body from '../Homepage/Body/Body.js';
-import Signup from '../Signup/Signup.js'
+import Signup from './Signup/Signup.js'
 import React from 'react';
 import './App.css';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';

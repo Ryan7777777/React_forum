@@ -1,0 +1,59 @@
+.body{
+    margin: auto;
+}
+.container{
+    margin-top: 10px;
+}
+.form{
+    width: 70%;
+    margin:auto;
+}
+.container .row h2{
+    position: relative;
+    margin-left: -26px;
+    padding-top: 8px;
+}
+@media (min-width: 768px) and (min-height:768px){
+    .body{
+        padding-top: 70px;
+        max-width:600px;
+    }
+    .container .row img{
+        width:"70%"; 
+        height:100%;
+    }
+    .formbody{
+        position: absolute;
+        height: 570px;
+        max-width: 600px;
+        background-color: white;
+    }
+    .FromEmail{
+        margin-top: 25px;
+    }
+  }
+@media (max-width:844px) and (max-height:442px){
+    .formbody{
+        width:100%;
+        height: 100vh;
+        background-color: white;
+        }
+    }
+@media (max-width: 767px) {
+    .body{
+       max-width:767px;
+    }
+    .formbody{
+        width:100%;
+        height: 100vh;
+        background-color: white;
+    }
+    .container .row img{
+        display: none
+    }
+    .FromEmail{
+        margin-top: 0px;
+    }
+  }
+
+
