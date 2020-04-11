@@ -28,7 +28,18 @@ const logout = () => {
         }
     })
 }
+const createuser = (username,email,given_name,family_name,password) =>{
+    return $.ajax({
+        url:'http://127.0.0.1:4255/api/v1/users',
+        type:'POST',
+        data:JSON.stringify({username:username,email:email,given_name:given_name,family_name:family_name,password:password}),
+        contentType: "application/json",
+        dataType: 'json',
+        async: false,
+    })
+}
 export const userService = {
     login,
-    logout 
+    logout,
+    createuser
 };
