@@ -1,36 +1,29 @@
 import React from 'react';
 import './Header.css';
-import {Nav,Navbar,Button} from 'react-bootstrap';
+import {Nav,Navbar, NavItem} from 'react-bootstrap';
 import logo from '../../Image/logo/blog-icon.png';
-import {userService} from "../../_services/user.service.js"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 class Header extends React.Component{
-    toggle = () => {
-        this.props.toggleModal();
+    toggleSidebar = () =>{
+        this.props.toggleSidlebar();
     }
-    logout = () => {
-        var a = userService.logout();
-        if (a.status === 200){
-            window.location.reload(false);
-        }
+    refresh = () =>{
+        window.location.reload(false);
     }
-    renderAuthButton = ()=>{
-        if(localStorage.login === "true"){
-          return <Button className="col-3 col-md-1 btn"size="sm"variant="outline-secondary" onClick={this.logout} >Log Out</Button>
-        } else{
-          return <Button className="col-3 col-md-1  btn log_btn"size="sm"variant="outline-secondary" onClick={this.toggle} >Log In /<br></br>Register</Button>
-        }
-      }
     render(){
         return (
         <div>
          <Navbar bg="light" expand="lg">
-            <Navbar.Brand href="/">
-                <img src={logo} width="30" height="30" alt="React Bootstrap logo"/>
-            </Navbar.Brand>
+            <NavItem>
+                <FontAwesomeIcon className="bar-icon" icon={faBars} onClick={this.toggleSidebar}/>
+            </NavItem>
+            <Nav.Item>
+                <img className="logo" src={logo} alt="React Bootstrap logo" onClick={this.refresh}/>
+            </Nav.Item>
             <Nav className="mr-auto">
             </Nav>
-            {this.renderAuthButton()}
-            </Navbar>
+        </Navbar>
         </div>
         )
     }
