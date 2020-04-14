@@ -13,25 +13,6 @@
     margin-left: -26px;
     padding-top: 8px;
 }
-@media (min-width: 768px) and (min-height:768px){
-    .body{
-        padding-top: 70px;
-        max-width:600px;
-    }
-    .container .row img{
-        width:"70%"; 
-        height:100%;
-    }
-    .formbody{
-        position: absolute;
-        height: 570px;
-        max-width: 600px;
-        background-color: white;
-    }
-    .FromEmail{
-        margin-top: 25px;
-    }
-  }
 @media (max-width:844px) and (max-height:442px){
     .formbody{
         width:100%;
@@ -55,5 +36,23 @@
         margin-top: 0px;
     }
   }
-
+  @media (min-width: 768px) and (min-height:442px){
+    .body{
+        padding-top: 70px;
+        max-width:600px;
+    }
+    .container .row img{
+        width:"70%"; 
+        height:100%;
+    }
+    .formbody{
+        position: absolute;
+        height: 570px;
+        max-width: 600px;
+        background-color: white;
+    }
+    .FromEmail{
+        margin-top: 25px;
+    }
+  }
 
