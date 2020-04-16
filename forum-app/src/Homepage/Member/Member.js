@@ -36,7 +36,7 @@ class Member extends React.Component{
                     <Form.Label>User name</Form.Label>  
                     <Row>
                         <Col xs={9}>
-                            <Form.Control type="string" placeholder={this.state.userName} value={this.state.userName} onChange = {this.updateUserName}></Form.Control>
+                            <Form.Control className="formUsername" type="string" placeholder={this.state.userName} value={this.state.userName} onChange = {this.updateUserName}></Form.Control>
                         </Col>
                         <Col xs={3}>
                             <Button varianr='primary' type="submit"> Update</Button>
