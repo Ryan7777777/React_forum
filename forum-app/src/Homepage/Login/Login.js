@@ -5,7 +5,7 @@ import {userService} from "../../_services/user.service.js";
 class Login extends React.Component{
     constructor(props){
         super(props)
-        this.state = {inCorrect: null, email : '',password : '',show: false}
+        this.state = {inCorrect: null, email : '',password : '',id: '',show: false}
     }
     loging = () => {
         this.setState({email: '',password: ''}) 
@@ -18,13 +18,13 @@ class Login extends React.Component{
     }
     closeModal = () => {
         this.setState({email: '',password: '',show: false})
-        this.props.toggleModal()
+        this.props.toggleLoginModal()
     }
     register = () =>{
         window.open("/signup/", '_blank');
     }
-     handleSubmit = (e) => {
-        e.preventDefault();
+     handleSubmit = (action) => {
+        action.preventDefault();
         var a = userService.login(this.state.email, this.state.password);
         if (a.status === 200){
             this.closeModal()
@@ -41,7 +41,7 @@ class Login extends React.Component{
       }
     render(){
         return(
-            <Modal  dialogClassName="modal" autoFocus={false} show={this.props.show_d} centered = {'true'} size={'md'} onHide={this.closeModal} >
+            <Modal  dialogClassName="modal" autoFocus={false} show={this.props.show_LoginModal} centered = {'true'} size={'md'} onHide={this.closeModal} >
             <Modal.Header closeButton>
             <Modal.Title >User Login</Modal.Title>
             </Modal.Header>

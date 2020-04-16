@@ -1,9 +1,10 @@
 import React from 'react';
 import './Home.css';
 import Hearder from "./Hearder/Header.js"
+import SideNav from "./SiderNav/SideNav.js";
 import Body from './Body/Body.js';
 import Login from './Login/Login.js';
-import SideNav from "./SiderNav/SideNav.js"
+import Member from "./Member/Member.js";
 const md = window.matchMedia( "(min-width: 768px)" );
 const lg = window.matchMedia( "(min-width: 1200px)" );
 class Home extends React.Component{
@@ -13,12 +14,13 @@ class Home extends React.Component{
         this.state = {
             user_Id: "",
             user_token: "",
-            show: false,
-            sildebar: false
+            loginModal: false,
+            sildebar: false,
+            memberModal: false
         }
     }
-    toggleModal = () => {
-        this.setState({show : !this.state.show})
+    toggleLoginModal = () => {
+        this.setState({loginModal : !this.state.loginModal})
     }
     toggleSidlebar = () =>{
         if(this.state.sildebar===false){
@@ -32,6 +34,12 @@ class Home extends React.Component{
             }
         }
     }
+    toggleMemberModal = () =>{
+        this.setState({memberModal:!this.state.memberModal})
+        if(this.state.memberModal === false){
+            this.closeSidlebar();
+        }
+    }
     closeSidlebar = ()=>{
         if(this.state.sildebar===true){
             this.setState({sildebar: false})
@@ -41,13 +49,14 @@ class Home extends React.Component{
     render(){
         return(
             <div>
-                <div className = "mainbody" onClick ={this.closeSidlebar}>
+                <div className = "mainpage" onClick ={this.closeSidlebar}>
                     <Hearder toggleSidlebar={this.toggleSidlebar}/>
-                    <Login show_d = {this.state.show} toggleModal={this.toggleModal} login={this.state.login}/>
                     <Body/>
                 </div>
                 <div className="slidewrapper" id="slidebar">
-                    <SideNav show_slide = {this.state.slidebar} toggleModal = {this.toggleModal}/>
+                    <Login show_LoginModal = {this.state.loginModal} toggleLoginModal={this.toggleLoginModal} login={this.state.login}/>
+                    <Member show_MemberModal = {this.state.memberModal} toggleMemberModal={this.toggleMemberModal} user_id={this.state.user_id}/>
+                    <SideNav show_slide = {this.state.slidebar} toggleLoginModal={this.toggleLoginModal} toggleMemberModal={this.toggleMemberModal} />
                 </div>
             </div>
         )
