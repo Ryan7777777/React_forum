@@ -85,3 +85,15 @@
 .register a:active{
     color: #0000ff;
 }
+.memberbutton{
+    overflow: hidden;
+    padding-left: 1em;
+    padding-top: 0.1em;
+    height: 30px;
+}
+.memberbutton:hover{
+    background-color: #efefef;
+}
+.memberbutton a:active{
+    color: #0000ff;
+}

@@ -9,8 +9,8 @@ class SideNav extends React.Component{
         super(props)
         this.state = {search:''};
     }
-    toggleModal = () => {
-        this.props.toggleModal();
+    toggleLoginModal = () => {
+        this.props.toggleLoginModal();
     }
     logout = () => {
         var a = userService.logout();
@@ -21,16 +21,19 @@ class SideNav extends React.Component{
     register = () =>{
         window.open("/signup/", '_blank');
     }
+    toggleMemberModal = () =>{
+        this.props.toggleMemberModal();
+    }
     renderLoginButton = ()=>{
         if(localStorage.login === "true"){
           return(<div className ="login" onClick={this.logout}><a>Log out</a></div>)
         } else{
-          return(<div className ="login" onClick={this.toggleModal}><a>Log In</a></div>)
+          return(<div className ="login" onClick={this.toggleLoginModal}><a>Log In</a></div>)
         }
       }
     renderMemberPageRegisterButton = () =>{
         if(localStorage.login === "true"){
-            return(<div className ="memberbutton" onClick={this.logout}><a>Account deails</a></div>)
+            return(<div className ="memberbutton" onClick={this.toggleMemberModal}><a>Account deails</a></div>)
           } else{
             return(<div className ="register" onClick={this.register}><a>Register</a></div>)
           }
