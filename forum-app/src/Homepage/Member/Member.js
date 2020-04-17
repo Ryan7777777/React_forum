@@ -7,7 +7,6 @@ class Member extends React.Component{
         super(props)
         var res = userService.getuserinfo(localStorage.userId);
         if(res.status === 200){
-            console.log(res)
             this.state = {show:false,userName:res.responseJSON.username,email:res.responseJSON.email,firstName:res.responseJSON.first_name,lastName:res.responseJSON.last_name}
         }
     }
