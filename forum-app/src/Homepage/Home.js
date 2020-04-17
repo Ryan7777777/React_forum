@@ -50,7 +50,7 @@ class Home extends React.Component{
         return(
             <div>
                 <div className = "mainpage" onClick ={this.closeSidlebar}>
-                    <Hearder toggleSidlebar={this.toggleSidlebar}/>
+                    <Hearder toggleSidlebar={this.toggleSidlebar} toogleMember={this.toggleMemberModal}/>
                     <Body/>
                 </div>
                 <div className="slidewrapper" id="slidebar">
