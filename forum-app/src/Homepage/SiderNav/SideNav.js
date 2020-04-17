@@ -26,16 +26,16 @@ class SideNav extends React.Component{
     }
     renderLoginButton = ()=>{
         if(localStorage.login === "true"){
-          return(<div className ="login" onClick={this.logout}><a>Log out</a></div>)
+          return(<div className ="login" onClick={this.logout}>Log out</div>)
         } else{
-          return(<div className ="login" onClick={this.toggleLoginModal}><a>Log In</a></div>)
+          return(<div className ="login" onClick={this.toggleLoginModal}>Log In</div>)
         }
       }
     renderMemberPageRegisterButton = () =>{
         if(localStorage.login === "true"){
-            return(<div className ="memberbutton" onClick={this.toggleMemberModal}><a>Account deails</a></div>)
+            return(<div className ="memberbutton" onClick={this.toggleMemberModal}>Account deails</div>)
           } else{
-            return(<div className ="register" onClick={this.register}><a>Register</a></div>)
+            return(<div className ="register" onClick={this.register}>Register</div>)
           }
     }
     render(){
@@ -43,8 +43,8 @@ class SideNav extends React.Component{
             <div id="slidebar">
                 <div className="menu">
                     <div className='brand'>
-                        <img  className="logo" src={logo}></img>
-                        <a>Name</a>
+                        <img  className="logo" src={logo} alt="logo_image"></img>
+                        Name
                     </div>
                     <div className="top">
                         <form className = "inputcontainer">
@@ -53,7 +53,7 @@ class SideNav extends React.Component{
                         </form>
                         {this.renderLoginButton()}
                         {this.renderMemberPageRegisterButton()}
-                        <div className ="history"><a>History</a></div> 
+                        <div className ="history">History</div> 
                     </div>
                 </div>
              </div>
