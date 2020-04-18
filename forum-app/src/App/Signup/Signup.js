@@ -85,34 +85,34 @@ class Signup extends React.Component {
               <Form className="form" onSubmit={this.register_checker}>
                 <Form.Group className='FromEmail'>
                     <Form.Label>Email:</Form.Label>
-                    <Form.Control  required type="email"placeholder="address@example.com"  isInvalid={this.state.invalidemail} value={this.email} onChange={this.update_email}/>
+                    <Form.Control  required type="email"placeholder="address@example.com"  isInvalid={this.state.invalidemail} value={this.email} onChange={this.update_email} maxLength={45}/>
                     <Form.Control.Feedback type="invalid">Email address already been used</Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group className="FromUserName">
                     <Form.Label>User Name:</Form.Label>
-                    <Form.Control  required placeholder="User name"  isInvalid={this.state.invalidusername} value={this.username} onChange={this.update_username}/>
+                    <Form.Control  required placeholder="User name"  isInvalid={this.state.invalidusername} value={this.username} onChange={this.update_username} maxLength={15} />
                     <Form.Control.Feedback type="invalid">User name alreadly been use or less than 7 charaters</Form.Control.Feedback>
                 </Form.Group> 
                 <Form.Group className="FromName"> 
                     <Form.Row>
                         <Col>
                             <Form.Label>First Name:</Form.Label>
-                            <Form.Control required placeholder="First name" value={this.firstname} onChange={this.update_firstname}/>
+                            <Form.Control required placeholder="First name" value={this.firstname} onChange={this.update_firstname} maxLength={20}/>
                         </Col>
                         <Col>
                             <Form.Label>Family Name:</Form.Label>
-                            <Form.Control  required placeholder="Family name" value={this.familyname} onChange={this.update_familyname}/>
+                            <Form.Control  required placeholder="Family name" value={this.familyname} onChange={this.update_familyname} maxLength={20}/>
                         </Col>
                     </Form.Row>
                 </Form.Group>
                 <Form.Group className="FromPassword">
                     <Form.Label>Password:</Form.Label>
-                    <Form.Control required type="password" placeholder="Password" isInvalid={this.state.invalidpassword} value={this.password} onChange={this.update_passowrd}/>
+                    <Form.Control required type="password" placeholder="Password" isInvalid={this.state.invalidpassword} value={this.password} onChange={this.update_passowrd} maxLength={64}/>
                     <Form.Control.Feedback type="invalid">Password must be at least 8 charaters long including at least one upper case charter and one lower case charater</Form.Control.Feedback>
                  </Form.Group>
                  <Form.Group className="FromConfirmPassword">   
                     <Form.Label>Confirmed Password:</Form.Label>
-                    <Form.Control required type="password" placeholder="Password"  isInvalid={this.state.invalidpassword} value={this.confirmpassword} onChange={this.update_confirm_password}/>
+                    <Form.Control required type="password" placeholder="Password"  isInvalid={this.state.invalidpassword} value={this.confirmpassword} onChange={this.update_confirm_password} macLength={64}/>
                     <Form.Control.Feedback type="invalid">Password and confimed password not identiacl</Form.Control.Feedback>
                 </Form.Group>
                 <Button variant="primary" type="submit">

@@ -7,11 +7,15 @@ class Member extends React.Component{
         super(props)
         var res = userService.getuserinfo(localStorage.userId);
         if(res.status === 200){
-            this.state = {show:false,userName:res.responseJSON.username,email:res.responseJSON.email,firstName:res.responseJSON.first_name,lastName:res.responseJSON.last_name}
+            this.state = {userName:res.responseJSON.username,email:res.responseJSON.email,firstName:res.responseJSON.first_name,lastName:res.responseJSON.last_name}
         }
     }
     toggleModal = () =>{
         this.props.toggleMemberModal()
+        var res = userService.getuserinfo(localStorage.userId);
+        if(res.status === 200){
+            this.setState({userName:res.responseJSON.username,email:res.responseJSON.email,firstName:res.responseJSON.first_name,lastName:res.responseJSON.last_name})
+        }
     }
     updateUserName = (name) =>{
         this.setState({userName:name.target.value})
@@ -35,7 +39,7 @@ class Member extends React.Component{
                     <Form.Label>User name</Form.Label>  
                     <Row>
                         <Col xs={9}>
-                            <Form.Control className="formUsername" type="string" placeholder={this.state.userName} value={this.state.userName} onChange = {this.updateUserName}></Form.Control>
+                            <Form.Control className="formUsername" type="string" placeholder={this.state.userName} value={this.state.userName} onChange = {this.updateUserName} maxLength={15}></Form.Control>
                         </Col>
                         <Col xs={3}>
                             <Button varianr='primary' type="submit"> Update</Button>
