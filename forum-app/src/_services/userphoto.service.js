@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import defaultUserImage from '../../src/Image/logo/default-user-image.png';
 const getUserPhoto = (userId) =>{
     $.ajax({
         url:"http://127.0.0.1:4255/api/v1/users/"+userId+"/photo",
@@ -14,6 +15,8 @@ const getUserPhoto = (userId) =>{
             img.src = url.createObjectURL(data);
         },
         error:function(){    
+            var img = document.getElementById("img")
+            img.src = (defaultUserImage);
         }
     });
 }
