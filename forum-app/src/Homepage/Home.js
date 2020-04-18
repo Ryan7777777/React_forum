@@ -49,8 +49,7 @@ class Home extends React.Component{
     renderMemberPage = ()=>{
         if(localStorage.login === "true"){
             return(<Member show_MemberModal = {this.state.memberModal} toggleMemberModal={this.toggleMemberModal} user_id={this.state.user_id}/>)
-        } else{
-        }
+        } 
     }
     render(){
         return(
@@ -61,7 +60,7 @@ class Home extends React.Component{
                 </div>
                 <div className="slidewrapper" id="slidebar">
                     <Login show_LoginModal = {this.state.loginModal} toggleLoginModal={this.toggleLoginModal} login={this.state.login}/>
-                    {this.renderMemberPage}
+                    {this.renderMemberPage()}
                     <SideNav show_slide = {this.state.slidebar} toggleLoginModal={this.toggleLoginModal} toggleMemberModal={this.toggleMemberModal} />
                 </div>
             </div>
