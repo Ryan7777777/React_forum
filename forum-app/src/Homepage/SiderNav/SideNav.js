@@ -44,7 +44,7 @@ class SideNav extends React.Component{
                 <div className="menu">
                     <div className='brand'>
                         <img  className="logo" src={logo} alt="logo_image"></img>
-                        Name
+                        <p>Name</p>
                     </div>
                     <div className="top">
                         <form className = "inputcontainer">

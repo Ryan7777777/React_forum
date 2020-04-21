@@ -15,13 +15,9 @@ class Header extends React.Component{
     refresh = () =>{
         window.location.reload(false);
     }
-    getUserImage = () =>{
-        var res = userPhotoService.getUserPhoto(localStorage.userId)
-        return (res.responseText)
-    }
     componentDidMount(){
         if(localStorage.login === 'true'){
-            userPhotoService.getUserPhoto(localStorage.userId)
+            userPhotoService.getUserImage(localStorage.userId)
         }
     }
     renderUserIcon = () =>{
@@ -36,7 +32,7 @@ class Header extends React.Component{
                 </Tooltip>
                 }
                 >
-                <Image className="userImage" id="img" roundedCircle onClick={this.toggleMemberModal}/>
+                <Image className="userIcon " id="imgLogo" roundedCircle onClick={this.toggleMemberModal}/>
                 </OverlayTrigger>{' '}
                 </>)
         } 

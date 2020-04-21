@@ -16,7 +16,7 @@ class Home extends React.Component{
             user_token: "",
             loginModal: false,
             sildebar: false,
-            memberModal: false
+            memberModal: undefined
         }
     }
     toggleLoginModal = () => {
