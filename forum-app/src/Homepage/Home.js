@@ -5,8 +5,6 @@ import SideNav from "./SiderNav/SideNav.js";
 import Body from './Body/Body.js';
 import Login from './Login/Login.js';
 import Member from "./Member/Member.js";
-const md = window.matchMedia( "(min-width: 768px)" );
-const lg = window.matchMedia( "(min-width: 1200px)" );
 class Home extends React.Component{
     constructor(prop){
         super(prop)
@@ -25,13 +23,7 @@ class Home extends React.Component{
     toggleSidlebar = () =>{
         if(this.state.sildebar===false){
             this.setState({sildebar: true})
-            if(lg.matches){
-                document.getElementById('slidebar').style.width="15%";
-            }else if(md.matches){
-                document.getElementById('slidebar').style.width="25%";
-            } else{
-                document.getElementById('slidebar').style.width="50%";
-            }
+            document.getElementById('slidebar').style.width="250px";
         }
     }
     toggleMemberModal = () =>{
