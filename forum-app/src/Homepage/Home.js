@@ -8,13 +8,10 @@ import Member from "./Member/Member.js";
 class Home extends React.Component{
     constructor(prop){
         super(prop)
-        this.slideRef = React.createRef();
         this.state = {
-            user_Id: "",
-            user_token: "",
             loginModal: false,
             sildebar: false,
-            memberModal: undefined
+            memberModal: false
         }
     }
     toggleLoginModal = () => {
@@ -27,21 +24,26 @@ class Home extends React.Component{
         }
     }
     toggleMemberModal = () =>{
-        this.setState({memberModal:!this.state.memberModal})
-        if(this.state.memberModal === false){
-            this.closeSidlebar();
+        if (localStorage.login === "true"){
+            console.log(this.state.memberModal)
+            this.setState({memberModal:!this.state.memberModal})
         }
     }
     closeSidlebar = ()=>{
         if(this.state.sildebar===true){
             this.setState({sildebar: false})
-            document.getElementById('slidebar').style.width="0%";
+            document.getElementById('slidebar').style.width="0px";
         }
     }
     renderMemberPage = ()=>{
-        if(localStorage.login === "true"){
-            return(<Member show_MemberModal = {this.state.memberModal} toggleMemberModal={this.toggleMemberModal} user_id={this.state.user_id}/>)
+        if(localStorage.login === "true" &&  this.state.memberModal === true){
+            return(<Member showMemberModal ={this.state.memberModal} toggleMemberModal={this.toggleMemberModal} />)
         } 
+    }
+    renderLoginPage = ()=>{
+        if(localStorage.login === 'false'){
+            return(<Login show_LoginModal = {this.state.loginModal} toggleLoginModal={this.toggleLoginModal} login={this.state.login}/>)
+        }
     }
     render(){
         return(
@@ -51,7 +53,7 @@ class Home extends React.Component{
                     <Body/>
                 </div>
                 <div className="slidewrapper" id="slidebar">
-                    <Login show_LoginModal = {this.state.loginModal} toggleLoginModal={this.toggleLoginModal} login={this.state.login}/>
+                    {this.renderLoginPage()}
                     {this.renderMemberPage()}
                     <SideNav show_slide = {this.state.slidebar} toggleLoginModal={this.toggleLoginModal} toggleMemberModal={this.toggleMemberModal} />
                 </div>

@@ -65,5 +65,8 @@ class Login extends React.Component{
         </Modal>
         )
     }
+    componentWillUnmount(){
+        clearInterval(this.interval);
+    }
 }
 export default Login;
