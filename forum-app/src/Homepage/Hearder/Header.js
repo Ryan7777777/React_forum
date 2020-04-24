@@ -6,6 +6,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import {userPhotoService} from "../../_services/userphoto.service.js";
 class Header extends React.Component{
+    constructor(props){
+        super(props)
+    }
     toggleSidebar = () =>{
         this.props.toggleSidlebar();
     }
