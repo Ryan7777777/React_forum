@@ -3,35 +3,24 @@ import  './Member.css';
 import {Modal,Form,Button,Image} from 'react-bootstrap';
 import {userService} from "../../_services/user.service.js";
 import {userPhotoService} from "../../_services/userphoto.service.js";
+
 class Member extends React.Component{
     constructor(props){
         super(props)
-        var res = userService.getuserinfo(localStorage.userId);
-        if(res.status === 200){
-            this.state = {selectedFile:null,
-                          preview:null,
-                          uploadButtonDisable: true,
-                          deleteButtonDisable: true,
-                          userNameUpdataButtonDisable: true,
-                          userName:res.responseJSON.username,
-                          email:res.responseJSON.email,
-                          firstName:res.responseJSON.first_name,
-                          lastName:res.responseJSON.last_name}
-        }
+        this.memberModelRef = React.createRef();
+        this.state = {selectedFile:null,
+                      preview:null,
+                      uploadButtonDisable: null,
+                      deleteButtonDisable: null,
+                      userNameUpdataButtonDisable: null,
+                      userName:'',
+                      email:'',
+                      firstName:'',
+                      lastName:''}
     }
-    toggleModal = () =>{
-        this.props.toggleMemberModal()
-        var res = userService.getuserinfo(localStorage.userId);
-        if(res.status === 200){
-            this.setState({selectedFile:null,
-                           preview:null, 
-                           uploadButtonDisable: true,
-                           deleteButtonDisable: true,
-                           userNameUpdataButtonDisable: true,
-                           userName:res.responseJSON.username,
-                           email:res.responseJSON.email,
-                           firstName:res.responseJSON.first_name,
-                           lastName:res.responseJSON.last_name})
+    static getDerivedStateFromProps = (props,state) =>{
+        if(state.uploadButtonDisable === null && state.deleteButtonDisable === null && state.userNameUpdataButtonDisable === null){
+            return{uploadButtonDisable: true,deleteButtonDisable:true,userNameUpdataButtonDisable:true}
         }
     }
     updateUserName = (name) =>{
@@ -40,6 +29,7 @@ class Member extends React.Component{
     changeUserName = (action) =>{
         action.preventDefault();
         var res = userService.updateUserName(localStorage.userId,this.state.userName)
+        this.setState({userNameUpdataButtonDisable:null})
         if (res.status === 200){
             alert('Update successful!')
         }
@@ -57,50 +47,67 @@ class Member extends React.Component{
         }
     }
     deletePteviewImage = () =>{
-        this.setState({selectedFile:null,preview:null,uploadButtonDisable:true,deleteButtonDisable:true})
+        this.setState({preview:null,uploadButtonDisable:true,deleteButtonDisable:true})
     }
-    componentDidUpdate(){
-        if(this.props.show_MemberModal === true && this.state.preview === null){
-            userPhotoService.getUserPhoto(localStorage.userId)
+    componentDidMount() {
+        userPhotoService.getUserPhoto(localStorage.userId)
+        userService.getuserinfo(localStorage.userId)
+    }
+    getSnapshotBeforeUpdate(prevProp, prevState){
+        if(prevState.selectedFile !== null && this.state.selectedFile === null){
+            const updateIcon = true
+            return  { updateIcon }
+        } 
+        return null;
+    }
+    componentDidUpdate(prevProp,prevState,sanpshot) {
+        if(sanpshot){
+        if(sanpshot.updateIcon){
             userPhotoService.getUserImage(localStorage.userId)
         } 
-        if(this.state.preview!==null){
+        }
+        if(this.state.preview !== null){
             var logo = document.getElementById("imgImage")
             logo.src = (this.state.preview);
+        } else {
+            userPhotoService.getUserPhoto(localStorage.userId)
         }
+      
     }
     render(){
         return(
-        <Modal centered = {'true'} size={'md'} show={this.props.show_MemberModal} onHide={this.toggleModal}>
+        <Modal centered = {'true'} size={'md'} show={this.props.showMemberModal} onHide={this.props.toggleMemberModal}>
             <Modal.Header closeButton>
                 <Modal.Title>Member Daetails</Modal.Title>
             </Modal.Header>
             <Modal.Body className="modalbody">
                 <div className ="imageFrame">
-                <label for="photo-upload" className="custom-file-upload fas">
+                <label  className="custom-file-upload fas">
                 <div className="img-wrap img-upload" >
-                <Image className='userImage'for="photo-upload" id="imgImage"/>
+                <Image className='userImage' id="imgImage"/>
                 </div>
-                <input id="photo-upload" type="file" onChange={this.fileChangedHandler}/> 
+                <input id="photo-upload" type="file" accept="image/png, image/jpeg"onChange={this.fileChangedHandler}/> 
                 </label>
                 </div>
                 <Button variant="primary"  onClick={this.uploadHandler} className="imageUpLoadButton" disabled ={this.state.uploadButtonDisable}>Upload</Button>
                 <Button variant="danger" onClick={this.deletePteviewImage} className="imageDeleteButton"disabled ={this.state.deleteButtonDisable}>Delete</Button>
             <Form onSubmit={this.changeUserName} className="form">
                 <Form.Label className="formUserNameLabel">User name</Form.Label>  
-                <Form.Control className="formUsername" type="string" placeholder={this.state.userName} value={this.state.userName} onChange = {this.updateUserName} maxLength={15}></Form.Control>
+                <Form.Control className="formUsername" type="string" placeholder={this.state.userName} id ="userName"  onChange = {this.updateUserName} maxLength={15}></Form.Control>
                 <Button variant='primary' type="submit" className="formUserNameUpdateButton"  disabled ={this.state.userNameUpdataButtonDisable}> Update</Button>
             </Form>
             <p className="userEmailTitle">User email:</p>
-            <p className="userEmail">{this.state.email}</p> 
+            <p className="userEmail" id="userEmail">dssds</p> 
             <p  className="userFullNameTitle"> User's full name:</p>
-            <p className="userFullName"> {this.state.firstName} {this.state.lastName}</p>
-           
+            <p className="userFullName" id="userFullName"></p>
             </Modal.Body>
             <Modal.Footer>
             </Modal.Footer>
         </Modal>
             )
+    }
+    componentWillUnmount(){
+        clearInterval(this.interval);
     }
 }
 export default Member;
