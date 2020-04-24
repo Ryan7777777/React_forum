@@ -20,7 +20,8 @@ class Home extends React.Component{
     toggleSidlebar = () =>{
         if(this.state.sildebar===false){
             this.setState({sildebar: true})
-            document.getElementById('slidebar').style.width="250px";
+            document.getElementById('slidebar').style.width="300px";
+            document.getElementById('dimlayer').style.width="1280px";
         }
     }
     toggleMemberModal = () =>{
@@ -33,6 +34,7 @@ class Home extends React.Component{
         if(this.state.sildebar===true){
             this.setState({sildebar: false})
             document.getElementById('slidebar').style.width="0px";
+            document.getElementById('dimlayer').style.width="0px";
         }
     }
     renderMemberPage = ()=>{
@@ -48,7 +50,8 @@ class Home extends React.Component{
     render(){
         return(
             <div>
-                <div className = "mainpage" onClick ={this.closeSidlebar}>
+                <div className='dimlayer' id='dimlayer' onClick={this.closeSidlebar}></div>
+                <div className = "mainPage" id="mainpage" onClick ={this.closeSidlebar}>
                     <Hearder toggleSidlebar={this.toggleSidlebar} toogleMember={this.toggleMemberModal}/>
                     <Body/>
                 </div>
