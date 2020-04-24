@@ -40,13 +40,18 @@ const createuser = (username,email,given_name,family_name,password) =>{
     })
 }
 const getuserinfo =  (userId,userName) =>{
-    return $.ajax({
+    $.ajax({
         url:'http://127.0.0.1:4255/api/v1/users/userinfo/'+userId,
         type:'GET',
         data:JSON.stringify({username:userName}),
         contentType:'appliaction/json',
         dataType: 'json',
-        async: false,
+        async: true,
+        success: function(data){
+           document.getElementById('userName').value = data.username
+           document.getElementById('userEmail').innerText = data.email
+           document.getElementById('userFullName').innerText = data.first_name +' '+data.last_name
+        }
     })
 }
 const updateUserName = (userId,userName) =>{
