@@ -41,7 +41,7 @@ class Login extends React.Component{
       }
     render(){
         return(
-            <Modal  dialogClassName="modal" autoFocus={false} show={this.props.show_LoginModal} centered = {'true'} size={'md'} onHide={this.closeModal} >
+            <Modal autoFocus={false} show={this.props.show_LoginModal} centered={true} size={'sm'} onHide={this.closeModal} >
             <Modal.Header closeButton>
             <Modal.Title >User Login</Modal.Title>
             </Modal.Header>
@@ -58,11 +58,12 @@ class Login extends React.Component{
             </Form.Group>
             </Modal.Body>
             <Modal.Footer>
-            < Button  className="position-relative col-3 col-sm-2 btn" type="submit" variant='outline-success' >Login</Button>
-            < Button  className="position-relative register col-3 col-sm-2 btn" variant='outline-secondary' onClick={this.register}>Register</Button>  
+            < Button   className="button" type="submit" variant='outline-success' >Login</Button>
+            < Button   className="button" variant='outline-secondary' onClick={this.register}>Register</Button>  
             </Modal.Footer>
             </Form>
         </Modal>
+
         )
     }
     componentWillUnmount(){

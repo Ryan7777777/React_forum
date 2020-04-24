@@ -1,147 +1,91 @@
-.modalbody{
-    height: 280px;
-}
-.imageFrame{
-    width: 200px;
-    height: 200px;
-}
-.imageFrame .userImage{
-    max-width: 200px;
+.imageFrame {
+    height:250px;
+    width:250px;
+    margin: auto;
+    position: relative;
     border-color: #000000;
-    max-height: 200px;
     border:1px solid #021a40;
+    display: block;
+    background-color: #e5e5e5;
 }
 input[type="file"] {
     display: none;
-  }
-.imageUpLoadButton{
-    position: absolute;
-    margin-top: 10px;
-    margin-left: 0px;
-    width:70px;
 }
-.imageDeleteButton{
+.userImage{
+    max-width: 247px;
+    max-height: 247px;
     position: absolute;
-    margin-top:  10px;
-    margin-left: 125px;
-    width:70px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
 }
 .formUserNameLabel{
-    position: absolute;
-    margin-top: -205px;
-    margin-left: 160px;
+    margin-left: -40px;
 }
 .formUsername{
-    position: absolute;
-    margin-top: -175px;
-    height: 2.15em;
-    width: 240px;
-    margin-left:160px;
+    margin-left: -40px;
+    width: 160px;
 }
 .formUserNameUpdateButton{
-    position: absolute;
-    margin-top: -135px;
-    margin-left: 330px;
-}
-.userEmailTitle{
-    position: absolute;
-    margin-top: -75px;
-    margin-left: 230px;
+    margin-left: 160px;
+    margin-top: -60px;
+    height: 28px;
+    width: 59px;
 }
 .userEmail{
     position: absolute;
-    margin-top: -45px;
-    margin-left: 230px;
-}
-.userFullNameTitle{
-    position: absolute;
-    margin-top: -10px;
-    margin-left: 230px;
+    margin-left: 83px;
+    margin-top: -40px;
 }
 .userFullName{
     position: absolute;
+    margin-left: 123px;
+    margin-top: -40px;
+}
+.modalTitle{
+    font-size: large;
+}
+@media (min-width:768px){
+.imageUpLoadButton{
+    width:59px;
+    height: 28px;
     margin-top: 20px;
-    margin-left: 230px;
+    margin-left: 120px;
+}
+.imageDeleteButton{
+    width: 59px;
+    height: 28px;
+    margin-top: -59px;
+    margin-left: 200px;
+}
 }
 @media (max-width:767px){
-    .modalbody{
-        height: 260px;
+    .modal-content{
+        width: 300px;
     }
-    .imageFrame{
-        width: 125px;
-        height: 125px;
-    }
-    .imageFrame .userImage{
-        max-width: 130px;
-        max-height: 130px;
+    .modal-body{
+        overflow: auto;
+        height: 500px;
     }
     .imageUpLoadButton{
-        margin-top: 80px;
-        margin-left: 0px;
-        width:130px;
+        width:100px;
+        height: 28px;
+        margin-top: 20px;
+        margin-left: 10px;
     }
     .imageDeleteButton{
-        margin-top:  30px;
-        margin-left: 0px;
-        width:70px;
-        width:130px;
+        width: 100px;
+        height: 28px;
+        margin-top: -59px;
+        margin-left: 160px;
     }
-    .formUserNameLabel{
-        margin-top: -130px;
-        margin-left: 100px;
-    }
-    .formUsername{
-        height: 2.15em;
-        width: 200px;
-        margin-top: -100px;
-        margin-left:100px;
-    }
-    .formUserNameUpdateButton{
-        margin-top: -50px;
-        margin-left: 235px;
-    }
-    .userEmailTitle{
+  
+}
+@media (max-width: 823px) and (orientation: landscape){
+    .modal-content{
         margin-top: 0px;
-        margin-left: 150px;
-    }
-    .userEmail{
-        margin-top:  30px;
-        margin-left: 150px;
-    }
-    .userFullNameTitle{
-        margin-top:  55px;
-        margin-left: 150px;
-    }
-    .userFullName{
-        margin-top: 85px;
-        margin-left: 150px;
-    }
-}
-@media (max-width:374px){
-    .imageFrame .userImage{
-        max-width: 130px;
-        max-height: 130px;
-    }
-    .formUserNameLabel{
-        margin-top: -130px;
-    }
-    .formUsername{
-        margin-top: -90px;
-        width: 170px;
-    }
-    .formUserNameUpdateButton{
-        margin-top: -40px;
-        margin-left: 200px;
-    }
-    .formEmail{
-        margin-top: 2em;
-    }
-}
-@media (max-width:335px){
-    .formUsername{
-        width: 140px;
-    }
-    .formUserNameUpdateButton{
-        margin-left: 170px;
+        width: 300px;
+        height: 300px;
+        overflow: auto;
     }
 }

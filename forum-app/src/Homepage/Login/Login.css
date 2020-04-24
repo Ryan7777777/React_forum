@@ -1,4 +1,11 @@
 .btn{
     text-align: center;
+    width:80px;
     font-size: small;
+}
+@media (max-width: 767px){
+    .modal-content{
+        margin: auto;
+        width: 300px;
+    }
 }

@@ -76,11 +76,11 @@ class Member extends React.Component{
     }
     render(){
         return(
-        <Modal centered = {'true'} size={'md'} show={this.props.showMemberModal} onHide={this.props.toggleMemberModal}>
+        <Modal centered = {'true'} size={'sm'} show={this.props.showMemberModal} onHide={this.props.toggleMemberModal} className="modal">
             <Modal.Header closeButton>
-                <Modal.Title>Member Daetails</Modal.Title>
+                <Modal.Title className="modalTitle">Member's Daetails</Modal.Title>
             </Modal.Header>
-            <Modal.Body className="modalbody">
+            <Modal.Body>
                 <div className ="imageFrame">
                 <label  className="custom-file-upload fas">
                 <div className="img-wrap img-upload" >
@@ -89,12 +89,12 @@ class Member extends React.Component{
                 <input id="photo-upload" type="file" accept="image/png, image/jpeg"onChange={this.fileChangedHandler}/> 
                 </label>
                 </div>
-                <Button variant="primary"  onClick={this.uploadHandler} className="imageUpLoadButton" disabled ={this.state.uploadButtonDisable}>Upload</Button>
-                <Button variant="danger" onClick={this.deletePteviewImage} className="imageDeleteButton"disabled ={this.state.deleteButtonDisable}>Delete</Button>
+                <Button variant="primary"  onClick={this.uploadHandler} size="sm" className="imageUpLoadButton" disabled ={this.state.uploadButtonDisable}>Upload</Button>
+                <Button variant="danger" onClick={this.deletePteviewImage} size="sm" className="imageDeleteButton"disabled ={this.state.deleteButtonDisable}>Delete</Button>
             <Form onSubmit={this.changeUserName} className="form">
-                <Form.Label className="formUserNameLabel">User name</Form.Label>  
+                <Form.Label className="formUserNameLabel">User name:</Form.Label>  
                 <Form.Control className="formUsername" type="string" placeholder={this.state.userName} id ="userName"  onChange = {this.updateUserName} maxLength={15}></Form.Control>
-                <Button variant='primary' type="submit" className="formUserNameUpdateButton"  disabled ={this.state.userNameUpdataButtonDisable}> Update</Button>
+                <Button variant='primary' type="submit" size="sm" className="formUserNameUpdateButton"  disabled ={this.state.userNameUpdataButtonDisable}> Update</Button>
             </Form>
             <p className="userEmailTitle">User email:</p>
             <p className="userEmail" id="userEmail">dssds</p> 
