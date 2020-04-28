@@ -1,0 +1,12 @@
+
+
+@media (max-width:1024){
+    .topicDialog{
+        overflow: hidden;
+        display: none;
+    }
+    .contentDialog{
+        overflow: hidden;
+        display: none;
+    }
+}
