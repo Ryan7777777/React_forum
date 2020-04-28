@@ -16,14 +16,14 @@ class Header extends React.Component{
         this.props.toogleMember();
     }
     refresh = () =>{
-        window.location.reload(false);
+        window.location.replace('http://localhost:3000/post/all')
     }
     componentDidMount(){
         if(localStorage.login === 'true'){
             userPhotoService.getUserImage(localStorage.userId)
         }
     }
-    renderUserIcon = () =>{
+    renderUserIcon (){
         if(localStorage.login === 'true'){
             return(<>
                 <OverlayTrigger
@@ -45,7 +45,7 @@ class Header extends React.Component{
         <div>
          <Navbar bg="light" expand="lg">
             <FontAwesomeIcon className="bar-icon" icon={faBars} onClick={this.toggleSidebar}/>
-            <img className="logo" src={logo} alt="React Bootstrap logo" onClick={this.refresh}/>
+            <img className="logo" src={logo} alt="React Bootstrap logo" id="imgLogo" onClick={this.refresh}/>
             <Nav className="mr-auto"></Nav>
            {this.renderUserIcon()}
         </Navbar>
