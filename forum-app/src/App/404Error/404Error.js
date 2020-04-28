@@ -1,6 +1,6 @@
 import React from 'react';
-import Error from './404Error.css'
-function ErrorPage() {
+import './404Error.css'
+function Error404Page() {
       return (<p>404 Not Found!!!</p>);
 }
-export default ErrorPage;
+export default Error404Page;
