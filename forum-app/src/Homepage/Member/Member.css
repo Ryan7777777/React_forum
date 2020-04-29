@@ -33,17 +33,36 @@ input[type="file"] {
     width: 59px;
 }
 .userEmail{
-    position: absolute;
-    margin-left: 83px;
+    position: relative;
+    font-weight: normal;
+    font-size: 1em;
+    margin-left: 30px;
     margin-top: -40px;
 }
+.userEmailTitle{
+    position: relative;
+    font-weight: normal;
+    font-size: 1em;
+    margin-left: -186px;
+}
 .userFullName{
-    position: absolute;
-    margin-left: 123px;
+    position: relative;
+    font-size: 1em;
+    font-weight: normal;
+    margin-left: 70px;
     margin-top: -40px;
+}
+.userFullNameTitle{
+    position: relative;
+    font-weight: normal;
+    font-size:1em;
+    margin-left: -148px;
 }
 .modalTitle{
     font-size: large;
+}
+p{
+    font-size: small;
 }
 @media (min-width:768px){
 .imageUpLoadButton{

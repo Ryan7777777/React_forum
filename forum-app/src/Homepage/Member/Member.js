@@ -97,7 +97,7 @@ class Member extends React.Component{
                 <Button variant='primary' type="submit" size="sm" className="formUserNameUpdateButton"  disabled ={this.state.userNameUpdataButtonDisable}> Update</Button>
             </Form>
             <p className="userEmailTitle">User email:</p>
-            <p className="userEmail" id="userEmail">dssds</p> 
+            <p className="userEmail" id="userEmail"></p> 
             <p  className="userFullNameTitle"> User's full name:</p>
             <p className="userFullName" id="userFullName"></p>
             </Modal.Body>
