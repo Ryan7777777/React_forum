@@ -2,30 +2,27 @@ import React from 'react';
 import "./Body.css";
 import  Post  from "./Post/Post";
 import Comment from './Comment/Comment';
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 class Body extends React.Component {
-    constructor(props){
-        super(props)
-        this.state = {postId:null}
-    }
-    shouldComponentUpdate() {
-        return true;
-    }
+    
+    state = {postId:null,postCategory:null}
     reportError = () => {
         this.props.error()
     }
-    renderComment(){
-        if(this.state.postId !== null){
-            return (<Comment comment_Id = {this.state.postId}/>)
-        }
+    postOnChange = (value)=> {
+        this.setState({postId:value,postCategory:null})
     }
-    openNewPost = (newPostId) =>{
-        this.setState({postId:newPostId})
-    }
+    //cateegory on change postid : null
+    
     render(){
         return (
             <div className = "bodyWrapper">
-               <Comment postId = {this.state.postId}/>
-                <Post newPostId={this.openNewPost}/>
+                <Switch>
+                <Router path='/comment'>
+                    <Comment postId = {this.state.postId}/>
+                </Router>
+                </Switch>
+                <Post  postOnChange={this.postOnChange} postCategory = {this.state.postCategory} />
             </div>)
     }
 }

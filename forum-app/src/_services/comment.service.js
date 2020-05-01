@@ -1,32 +1,28 @@
 import $ from 'jquery';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import lastUpdateCalaulater  from "../tools/lastupdateCalculater"
+import {userService} from "./user.service"
+import Error404Page from '../App/404Error/404Error';
+import Error500Page from '../App/500Error/500Error';
 const postOpen = false;
 
 const loadAllComment = (postId) =>{
-    $.ajax({
-        url:'http://127.0.0.1:4255/api/v1/comment/' +postId,
-        type: 'GET',
-        async: false ,
-        success: function(data){
-            var commentMenu = document.getElementById('contentMenu');
-            commentMenu.innerHTML = ""
-            for(var i = 0;  i< data.length ; i++){
-            var commentContainer = document.createElement('div')
-            commentContainer.id = "com" + i
-            commentContainer.className = "commentComtainer"
-            var content = document.createElement('p')
-            content.innerHTML = data[i].content
-            commentContainer.appendChild(content)
-            var date = document.createElement('p')
-            date.innerHTML =  lastUpdateCalaulater(data[i].date)
-            commentContainer.appendChild(date)
-            var ul = document.createElement('ul')
-            ul.id = 'ul' + i
-            commentContainer.appendChild(ul)
-            loadCommentPhotosName(data[i].id,i)
-            commentMenu.appendChild(commentContainer)
-        }
-    }
+    return new Promise((reslove, reject)=>{
+        $.ajax({
+            url:'http://127.0.0.1:4255/api/v1/comment/' +postId,
+            type: 'GET',
+            async: true,
+            success: function(data){
+                reslove(data)
+            }, error: function(qxhr){
+                if(qxhr.status === 404){
+                    ReactDOM.render(<Error404Page/>,document.getElementById('page'));
+                } else {
+                    ReactDOM.render(<Error500Page/>,document.getElementById('page'));
+                }
+            }
+        })
     })
 }
 const loadCommentPhotosName = (commentId,com) => {
@@ -50,7 +46,6 @@ const loadCommentPhotosName = (commentId,com) => {
     
 }
 const getCommentPhoto = (commentId,fileName,com) =>{
-    console.log(fileName)
     $.ajax({
         url:'http://127.0.0.1:4255/api/v1/comment/' + commentId + '/photo/' + fileName,
         cache: false,

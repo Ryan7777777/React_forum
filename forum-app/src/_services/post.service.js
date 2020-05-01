@@ -1,8 +1,6 @@
 import $ from 'jquery';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import lastUpdateCalaulater  from "../tools/lastupdateCalculater";
-import { commentServie } from "../_services/comment.service";
 import Error500Page from '../App/500Error/500Error';
 import Error404Page from '../App/404Error/404Error';
 const loadallpost = () =>{
@@ -10,7 +8,7 @@ const loadallpost = () =>{
         $.ajax({
             url:'http://127.0.0.1:4255/api/v1/allpost/',
             type:'GET',
-            async: true ,
+            async: false ,
             success: function(data){   
                 reslove(data)
             }, error: function(qxhr){

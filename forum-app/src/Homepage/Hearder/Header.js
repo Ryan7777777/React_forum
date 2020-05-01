@@ -16,7 +16,7 @@ class Header extends React.Component{
         this.props.toogleMember();
     }
     refresh = () =>{
-        window.location.replace('http://localhost:3000/post/all')
+        window.location.replace('http://localhost:3000/post/0')
     }
     componentDidMount(){
         if(localStorage.login === 'true'){

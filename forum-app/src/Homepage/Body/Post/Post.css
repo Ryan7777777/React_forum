@@ -1,0 +1,46 @@
+.topicDialog{
+    position: absolute;
+    width: 350px;
+    height:calc(100% - 55px);
+    border-style: solid;
+    border-color: #9696964f;
+    border-width: 0.05em 0.05em 0.05em 0.03em;
+    overflow-y: scroll;
+}
+.topicDialog::-webkit-scrollbar{
+    width: 0.3em;
+    background-color: rgba(255, 255, 255, 0.952);
+    border-radius: 0.6em;
+}
+.topicDialog::-webkit-scrollbar-thumb {
+    background: rgb(150, 150, 150); 
+    border-radius: 0.5em;
+}
+.topicDialog .postBox{
+    height: 70px;
+    margin: 0.2em 0.3em;
+    border-bottom: 0.2em solid #f5f5f5;
+    transition: background-color 1s; ;   
+}
+.topicDialog .postBox:hover{
+    background-color: rgb(236, 243, 176);
+}
+.topicDialog .postBox .author{
+    position: absolute;
+    margin-top: 3px;
+    margin-left: 3px;
+    font-size: medium;
+    font-weight: bold;
+}
+.topicDialog .postBox .date{
+    position: absolute;
+    margin-top: 0px;
+    margin-left: 270px;
+    font-size: small;
+}
+.topicDialog .postBox .title{
+    position: absolute;
+    font-size: x-large;
+    margin-top: 36px;
+    margin-left: 5px;
+}

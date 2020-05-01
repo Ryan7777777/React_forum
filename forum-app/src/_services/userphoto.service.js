@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import defaultUserImage from '../../src/Image/logo/default-user-image.png';
+import userImage from '../Image/logo/default-user-image.png';
 
 const getUserImage = (userId) =>{
     $.ajax({
@@ -15,9 +15,11 @@ const getUserImage = (userId) =>{
             var url = window.URL || window.webkitURL;
             logo.src = url.createObjectURL(data);
         },
-        error:function(){    
+        error:function(qxhr){
+            if(qxhr === 404){
             var logo = document.getElementById("imgLogo")
-            logo.src = (defaultUserImage);
+            logo.src = (userImage);
+            }   
         }
     });
 }
@@ -37,7 +39,7 @@ const getUserPhoto = (userId) =>{
         },
         error:function(){    
             var userPhoto = document.getElementById("imgImage")
-            userPhoto.src = (defaultUserImage);
+            userPhoto.src = (userImage);
         }
     });
 }

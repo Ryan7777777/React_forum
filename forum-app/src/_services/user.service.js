@@ -54,17 +54,13 @@ const getuserinfo =  (userId,userName) =>{
         }
     })
 }
-const getUserName = (userId,commentPosition) =>{
-    $.ajax({
+const getUserName = (userId) =>{
+    return $.ajax({
         url:'http://127.0.0.1:4255/api/v1/users/userinfo/'+userId,
         type:'GET',
         contentType:'appliaction/json',
         dataType: 'json',
-        async: true,
-        success: function(data){
-           var author = document.getElementById('author'+commentPosition)
-           author.innerHTML = data.username
-        }
+        async: false,
     })
 }
 const updateUserName = (userId,userName) =>{

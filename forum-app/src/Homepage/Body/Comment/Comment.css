@@ -1,0 +1,70 @@
+.contentDialog{
+    position: absolute;
+    width: calc(100% - 352px);
+    height:calc(100% - 55px);
+    margin-left: 352px;
+    border-style: solid;
+    border-color: #9696964f;
+    border-width: 0.05em 0.05em 0.05em 0.03em;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.contentDialog::-webkit-scrollbar{
+    width: 0.3em;
+    background-color: #f5f5f5;
+    border-radius: 0.6em;
+}
+.contentDialog::-webkit-scrollbar-thumb {
+    background: rgb(82, 81, 81); 
+    border-radius: 0.5em;
+}
+.content{
+    background-color: white;
+    border-radius: 3mm;
+}
+.topic{
+    background-color:#f5f5f5;
+    height: 70px;
+}
+.topic p{
+    position: absolute;
+    left: 20px;
+    font-size: 50px;
+    font-weight: 700;
+}
+.contentDialog .content .commmentBox{
+    background-color: white;
+}
+.contentDialog .content .commmentBox .commentAuthor{
+    position: relative;
+    font-size: x-large;
+    top:5px;
+    left: 10px;
+}
+.contentDialog .content .commmentBox .commentDate{
+     position: relative;
+     top: -40px;
+     left: 840px;
+     font-size: 15px;
+}
+.contentDialog .content .commmentBox .commentContent {
+    position: relative;
+    left:40px;
+    font-size: 30px;
+}
+.contentDialog .content .commentImage{
+    position: relative;
+}
+.contentDialog .content .commentImage ul{
+    margin: auto;
+    list-style-type: none;
+}
+.contentDialog .content ul li{
+    margin: auto;
+}
+.contentDialog  .content .gap{
+    widows: 100%;
+    height: 100px;
+    background-color: #f5f5f5;
+}
