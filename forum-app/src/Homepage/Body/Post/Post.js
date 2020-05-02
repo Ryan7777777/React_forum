@@ -21,7 +21,9 @@ class Post extends React.Component{
         })
      }
     redirectToPost = (postId,e) =>{
-        document.location.href = '/comment/'+postId
+        var path ='/comment/'+postId
+        this.props.history.push(path)
+        this.props.postOnChange(postId)
      }
      renderTopicDialog (){
              return(this.renderPost())
@@ -29,7 +31,7 @@ class Post extends React.Component{
      renderPost (){
       return(
       <div>{this.state.posts.map((post,i) => (
-          <div className="postBox" onClick={(e)=>this.redirectToPost(post.id,e)} key={i}>
+          <div className="postBox" onClick={(e)=>this.redirectToPost(post.id,post,e)} key={i}>
             <p className="author">{post.author}</p>
             <p className="date">{lastUpdateCalaulater(post.date)}</p>
             <p className="title">{post.title}</p>
