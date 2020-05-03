@@ -24,6 +24,9 @@ class SideNav extends React.Component{
     toggleMemberModal = () =>{
         this.props.toggleMemberModal();
     }
+    toggleNewPostModal = () =>{
+        this.props.toggleNewPostModal();
+    }
     renderLoginButton = ()=>{
         if(localStorage.login === "true"){
           return(<div className ="login" onClick={this.logout}>Log out</div>)
@@ -37,6 +40,11 @@ class SideNav extends React.Component{
           } else{
             return(<div className ="register" onClick={this.register}>Register</div>)
           }
+    }
+    renderNewPostButton(){
+        if(localStorage.login === 'true'){
+            return <div className="newpostbutton" onClick={this.toggleNewPostModal}>Write a post</div>
+        }
     }
     render(){
         return(
@@ -54,6 +62,7 @@ class SideNav extends React.Component{
                         {this.renderLoginButton()}
                         {this.renderMemberPageRegisterButton()}
                         <div className ="history">History</div> 
+                        {this.renderNewPostButton()}
                     </div>
                 </div>
              </div>

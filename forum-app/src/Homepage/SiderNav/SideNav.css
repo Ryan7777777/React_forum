@@ -101,3 +101,15 @@
 .memberbutton a:active{
     color: #0000ff;
 }
+.newpostbutton{
+    overflow: hidden;
+    padding-left:1em;
+    padding-top: 0.1em;
+    height: 30px;
+}
+.newpostbuttton:hover{
+    background-color: #efefef;
+}
+.newpostbutton a:active{
+    color: #0000ff;
+}
