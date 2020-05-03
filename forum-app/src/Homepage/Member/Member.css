@@ -8,7 +8,7 @@
     display: block;
     background-color: #e5e5e5;
 }
-input[type="file"] {
+.imageFrame input[type="file"]{
     display: none;
 }
 .userImage{

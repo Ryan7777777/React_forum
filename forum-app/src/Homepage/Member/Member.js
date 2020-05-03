@@ -81,14 +81,12 @@ class Member extends React.Component{
                 <Modal.Title className="modalTitle">Member's Daetails</Modal.Title>
             </Modal.Header>
             <Modal.Body>
+                <label>
                 <div className ="imageFrame">
-                <label  className="custom-file-upload fas">
-                <div className="img-wrap img-upload" >
                 <Image className='userImage' id="imgImage"/>
+                <input  className="userImageInput" id="photo-upload" type="file" accept="image/png, image/jpeg"onChange={this.fileChangedHandler}/> 
                 </div>
-                <input id="photo-upload" type="file" accept="image/png, image/jpeg"onChange={this.fileChangedHandler}/> 
                 </label>
-                </div>
                 <Button variant="primary"  onClick={this.uploadHandler} size="sm" className="imageUpLoadButton" disabled ={this.state.uploadButtonDisable}>Upload</Button>
                 <Button variant="danger" onClick={this.deletePteviewImage} size="sm" className="imageDeleteButton"disabled ={this.state.deleteButtonDisable}>Delete</Button>
             <Form onSubmit={this.changeUserName} className="form">
