@@ -10,12 +10,14 @@ class Comment extends React.Component{
         this.state={postId:null,comments:[],commentsId:null,error:null}
     }
     static getDerivedStateFromProps(props,states){
-        if(props.postId !== states.postId){
-            return{postId:props.postId,load:false}
-        } 
+      if(props.postId===null){
+            return{postId:null}
+        } else {
+            return{postId:props.postId}
+        }
     }
     componentDidMount(){
-          this.getComments(this.postId)
+            this.getComments(this.postId)
     }
     getComments = () =>{
         commentServie.loadAllComment(this.state.postId)
@@ -40,10 +42,11 @@ class Comment extends React.Component{
             }
     }
     componentDidUpdate(){
-        this.getComments(this.props.postId)
+        if(this.state.postId!==null){
+            this.getComments(this.props.postId)
+        }
     }
     addPhotoId(i){
-       
        this.loadPhoto(i)
     }
     loadPhoto(i){
