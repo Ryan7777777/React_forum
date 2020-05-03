@@ -45,7 +45,7 @@ class Header extends React.Component{
         <div>
          <Navbar bg="light" expand="lg">
             <FontAwesomeIcon className="bar-icon" icon={faBars} onClick={this.toggleSidebar}/>
-            <img className="logo" src={logo} alt="React Bootstrap logo" id="imgLogo" onClick={this.refresh}/>
+            <img className="logo" src={logo} alt="React Bootstrap logo" id="imgForumLogo" onClick={this.refresh}/>
             <Nav className="mr-auto"></Nav>
            {this.renderUserIcon()}
         </Navbar>
