@@ -1,20 +1,23 @@
 import React from 'react';
 import './Home.css';
-import Hearder from "./Hearder/Header.js"
-import SideNav from "./SiderNav/SideNav.js";
-import Body from './Body/Body.js';
-import Login from './Login/Login.js';
-import Member from "./Member/Member.js";
+import Hearder from "./Hearder/Header"
+import SideNav from "./SiderNav/SideNav";
+import Body from './Body/Body';
+import Login from './Login/Login';
+import Member from "./Member/Member";
+import NewPost from './NewPost/NewPost';
 class Home extends React.Component{
     constructor(prop){
         super(prop)
         this.state = {
             loginModal: false,
             sildebar: false,
-            memberModal: false
+            memberModal: false,
+            newpostModal: false
         }
     }
     toggleLoginModal = () => {
+        if(localStorage.login === 'false')
         this.setState({loginModal : !this.state.loginModal})
     }
     toggleSidlebar = () =>{
@@ -25,10 +28,10 @@ class Home extends React.Component{
         }
     }
     toggleMemberModal = () =>{
-        if (localStorage.login === "true"){
-            console.log(this.state.memberModal)
-            this.setState({memberModal:!this.state.memberModal})
-        }
+        this.setState({memberModal:!this.state.memberModal})
+    }
+    toggleNewPostModal = () =>{
+        this.setState({newpostModal:!this.state.newpostModal})
     }
     closeSidlebar = ()=>{
         if(this.state.sildebar===true){
@@ -37,14 +40,19 @@ class Home extends React.Component{
             document.getElementById('dimlayer').style.width="0px";
         }
     }
-    renderMemberPage = ()=>{
-        if(localStorage.login === "true" &&  this.state.memberModal === true){
+    renderMemberPage (){
+        if(this.state.memberModal === true){
             return(<Member showMemberModal ={this.state.memberModal} toggleMemberModal={this.toggleMemberModal} />)
         } 
     }
-    renderLoginPage = ()=>{
-        if(localStorage.login === 'false'){
+    renderLoginPage (){
+        if(this.state.loginModal ===true){
             return(<Login show_LoginModal = {this.state.loginModal} toggleLoginModal={this.toggleLoginModal} login={this.state.login}/>)
+        }
+    }
+    renderNewPostModal (){
+        if(this.state.newpostModal === true){
+            return(<NewPost show_NewPostModal ={this.state.newpostModal} toggleNewPostModal={this.toggleNewPostModal}/>)
         }
     }
     render(){
@@ -58,7 +66,8 @@ class Home extends React.Component{
                 <div className="slidewrapper" id="slidebar">
                     {this.renderLoginPage()}
                     {this.renderMemberPage()}
-                    <SideNav show_slide = {this.state.slidebar} toggleLoginModal={this.toggleLoginModal} toggleMemberModal={this.toggleMemberModal} />
+                    {this.renderNewPostModal()}
+                    <SideNav show_slide = {this.state.slidebar} toggleLoginModal={this.toggleLoginModal} toggleMemberModal={this.toggleMemberModal} toggleNewPostModal={this.toggleNewPostModal} toggleNewPostModal={this.toggleNewPostModal}/>
                 </div>
             </div>
         )
