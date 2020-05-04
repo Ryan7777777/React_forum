@@ -1,6 +1,8 @@
 import React from 'react';
 import './NewPost.css'
-import {Modal,Form,Button} from 'react-bootstrap';
+import {Modal,Form,Button, ThemeProvider} from 'react-bootstrap';
+import {postService} from '../../_services/post.service';
+import {commentPhotoServie} from '../../_services/commentPhoto.service';
 class NewPost extends React.Component{
     constructor(props){
         super(props)
@@ -10,11 +12,17 @@ class NewPost extends React.Component{
         if(state.selectFile.length == 0 && state.selectFilePreview.legth == 0)
         return({selectfile:null,selectFilePreview:null})
     }
-    postNewPost = () =>{
-        
+    postNewPost = (e) =>{
+        e.preventDefault();
+        postService.uploadNewPost(this.state.topic,this.state.content,this.state.selectFile)
+        .then(data=>{
+            this.succeddfulSubmit()
+        })
+        .catch(error=>{
+            console.log(error)
+        })
     }
     updateTopic = (e) =>{
-        console.log(e.target.value)
         this.setState({topic:e.target.value})
     }
     updateContent = (event) =>{
@@ -41,6 +49,9 @@ class NewPost extends React.Component{
         this.setState({selectFile:selectfile,selectFilePreview:previewImage})
       
     }
+    succeddfulSubmit(){
+        window.location.replace(window.location.origin )
+    }
     renderPhotoPreview(){
     return(<div className='selectImageBox'>{this.state.selectFilePreview.map((file,i)=>(
                 <div className="imageBox" key={i}>
@@ -57,14 +68,14 @@ class NewPost extends React.Component{
                 <Modal.Title className="modalTitle">Assign a new post</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form onSubmit={this.postNewPost} className='newPostForm'>
+                <Form onSubmit={this.postNewPost.bind(this)} className='newPostForm'>
                 <div className='topicSection'>
                     <Form.Label className='fromTopicLabel'>Topic:</Form.Label>
                     <Form.Control className='fromTopicInput' type='string' placeholder='type you topic here' id='topicInput' onChange={this.updateTopic}></Form.Control>
                 </div>
                 <div className='contentSection'>
                     <Form.Label className='fromCommentLabel'>Comment: </Form.Label>
-                    <Form.Control className='fromCommentInput' type='string' placeholder='type your comment here' id='connentInput' onChange={this.updateContent}></Form.Control>
+                    <Form.Control className='fromCommentInput' type='string' placeholder='type your comment here' id='connentInput' minLength={5} onChange={this.updateContent}></Form.Control>
                 </div>
                 <div className="imageSelection">
                     <input id='photoInput' type="file"  className="imageInput" accept="image/jepg , image/png"onChange={this.handleChange} multiple/>
